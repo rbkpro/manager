@@ -20,44 +20,46 @@ import org.rbkpro.javacf.messenger.service.MessageService;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class MessageResource {
-	
-	MessageService messageService= new MessageService();
-	
+
+	MessageService messageService = new MessageService();
+
 	@GET
 	public List<Message> getMessages(@QueryParam("year") int year,
-									 @QueryParam("start") int start,
-									 @QueryParam("size") int size){
-		if (year>0){
+									 @QueryParam("start") int start, 
+									 @QueryParam("size") int size) {
+		if (year > 0) {
 			return messageService.getAllMessagesForYear(year);
+		}else{ if (size > 0) {
+			return messageService.gettAllMessagesPaginated(start, size);
 		}
-		if(start>=0)return messageService.gettAllMessagesPaginated(start, size);
+		else 
+			return messageService.getAllMessages();		
+		}
 		
-		return messageService.getAllMessages();
 	}
-	
-
 
 	@GET
 	@Path("/{messageId}")
 	public Message getMessage(@PathParam("messageId") long messageId) {
-		return messageService.getMessage(messageId);	
+		return messageService.getMessage(messageId);
 	}
-	
+
 	@POST
-	public Message addMessage(Message message){
+	public Message addMessage(Message message) {
 		return messageService.addMessage(message);
 	}
-	
+
 	@PUT
 	@Path("/{messageId}")
-	public Message updateMessage(@PathParam("messageId") long id, Message message){
+	public Message updateMessage(@PathParam("messageId") long id,
+			Message message) {
 		message.setId(id);
 		return messageService.updateMessage(message);
 	}
-	
+
 	@DELETE
 	@Path("/{messageId}")
-	public Message removeMessage(@PathParam("messageId") long id){
+	public Message removeMessage(@PathParam("messageId") long id) {
 		return messageService.removeMessage(id);
 	}
 }
