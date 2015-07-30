@@ -7,7 +7,9 @@ import javax.ws.rs.HeaderParam;
 import javax.ws.rs.MatrixParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 
 
 @Path("/injection")
@@ -24,5 +26,12 @@ public class InjectionDemoResource {
 		
 		return "matrix param : "+matParam+" / header costume param : "+valueParam+" / cookie param : "+cookPram;
 	}
+	
+	public String getParamContext(@Context UriInfo  uriInfo){
+	    
+		return "test";
+		
+	}
 
+	
 }
