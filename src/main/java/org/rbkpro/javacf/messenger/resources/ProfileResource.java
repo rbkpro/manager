@@ -25,8 +25,12 @@ public class ProfileResource {
 	 
 	@GET
 	public List<Profile> getProfiles() {
-		//return profileService.GetFeeds();
 		return profileService.getAllProfiles();
+	}
+	@GET
+	@Path("GetFeeds")
+	public List<Profile> getFeed() throws Exception {
+		return profileService.GetFeeds();
 	}
 	
 	@POST
