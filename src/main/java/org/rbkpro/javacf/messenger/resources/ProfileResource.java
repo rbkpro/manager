@@ -1,5 +1,6 @@
 package org.rbkpro.javacf.messenger.resources;
 
+
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -23,7 +24,8 @@ public class ProfileResource {
 	ProfileService profileService = new ProfileService();
 	 
 	@GET
-	public List<Profile> getProfiles(){
+	public List<Profile> getProfiles() {
+		//return profileService.GetFeeds();
 		return profileService.getAllProfiles();
 	}
 	
@@ -50,4 +52,10 @@ public class ProfileResource {
 	public void deleteProfile(@PathParam("profileName") String profileName){
 		profileService.removeProfile(profileName);
 	}
+
+	
+
+
+
+
 }
