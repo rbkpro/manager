@@ -28,7 +28,7 @@ public class EmployeeResource {
 	}
 	 
 	@GET
-	public ArrayList<Employee> getEmployees() {
+	public ArrayList<Employee> getEmployees() throws Exception {
 		return EmployeeService.getAllEmployees();
 	}
 	
@@ -57,11 +57,11 @@ public class EmployeeResource {
 		Employee.setLast_name(EmployeeName);
 		return EmployeeService.updateEmployee(Employee);
 	}
-	
-	@DELETE
-	@Path("/{EmployeeName}")
-	public void deleteEmployee(@PathParam("EmployeeName") String EmployeeName){
-		EmployeeService.removeEmployee(EmployeeName);
+	 
+	@GET
+	@Path("emptyemployees")
+	public void deleteEmployee() throws Exception{
+		EmployeeService.removeEmployee();
 	}
 
 	

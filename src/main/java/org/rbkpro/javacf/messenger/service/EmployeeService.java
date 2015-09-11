@@ -19,9 +19,9 @@ public class EmployeeService  {
 		employees=fetchDatabase.getEmployees();
 	}
 	
-	public ArrayList<Employee> getAllEmployees(){
+	public ArrayList<Employee> getAllEmployees() throws Exception{
 		System.out.print("size list employees :"+employees.size());
-		return new ArrayList<Employee>(employees.values());
+		return new ArrayList<Employee>(fetchDatabase.getEmployees().values());
  	}
 	
 	public Employee getEmployee(String employeeName){
@@ -42,8 +42,8 @@ public class EmployeeService  {
 		 return employee;
 	}
 	
-	public void removeEmployee(String employeeName) {
-		 employees.remove(employeeName);	
+	public void removeEmployee() throws Exception{
+		fetchDatabase.emptyEmployees();	
 	}
 	
 	

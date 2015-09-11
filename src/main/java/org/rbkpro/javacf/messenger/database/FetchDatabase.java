@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,9 +23,10 @@ public class FetchDatabase {
 	private Connection connection ;
 	private Database database;
 	private static Map<String, Employee> employees=  new HashMap<>();
-	private String GET_EMPLOYEES= "SELECT * FROM employee ";
+	private String DELETE_EMPLOYEES = "DELETE FROM employee";
+	private String GET_EMPLOYEES = "SELECT * FROM employee ";
 	private String ORDER_BY = "ORDER BY date_of_birth DESC";
-	private String INSERT_EMPLOYEES="insert into employee(first_name,last_name,date_of_birth,place_of_birth,marital_status,"
+	private String INSERT_EMPLOYEES ="insert into employee(first_name,last_name,date_of_birth,place_of_birth,marital_status,"
 			+ "childs_number,phone_number,education_level,diploma,date_start_firstjob,grade_firstjob,date_join_cf,"
 			+ "grade_join_cf,actual_grade) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
@@ -39,7 +41,7 @@ public class FetchDatabase {
 	
 	
 	public Map<String,Employee> getEmployees() throws Exception{
-		
+		employees.clear();
 		try{
 			PreparedStatement ps = connection.prepareStatement(GET_EMPLOYEES+ORDER_BY);
 			ResultSet rs = ps.executeQuery();
@@ -72,6 +74,10 @@ public class FetchDatabase {
 		}
 	}
 	
+	public void emptyEmployees() throws SQLException{
+		PreparedStatement ps = connection.prepareStatement(DELETE_EMPLOYEES);
+		ps.executeUpdate();
+	}
 	public int insertEmployees() throws Exception{
 		
 		PreparedStatement ps = connection.prepareStatement(INSERT_EMPLOYEES);
@@ -104,56 +110,56 @@ public class FetchDatabase {
         try {
         	java.util.Date dt=new java.util.Date();
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
-            employees.put(1L, new Employee("فراح", "زيموش", df.parse("19/07/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(2L, new Employee("نبيل", "ناصر", df.parse("19/07/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(3L, new Employee("سهام", "بوحوحو", df.parse("19/07/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(1L, new Employee("فراح", "زيموش", df.parse("19/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(2L, new Employee("نبيل", "ناصر", df.parse("19/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(3L, new Employee("سهام", "بوحوحو", df.parse("19/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
 
-            employees.put(4L, new Employee("حياة", "بن خليفة", df.parse("26/07/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(5L, new Employee("صالح", "رماش", df.parse("26/07/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(6L, new Employee("أمين", "سطاح", df.parse("26/07/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(4L, new Employee("حياة", "بن خليفة", df.parse("26/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(5L, new Employee("صالح", "رماش", df.parse("26/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(6L, new Employee("أمين", "سطاح", df.parse("26/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
 
-            employees.put(7L, new Employee("يزيد", "خلاف", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(8L, new Employee("عبد الهادي", "بلفتحي", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(9L, new Employee("سلمى", "معروف", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(10L, new Employee("سليمة", "فرعيشي", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(11L, new Employee("احمد", "بلخطابية", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(12L, new Employee("فضيلة", "بولعيد", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(13L, new Employee("رضوان", "عميمور", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(14L, new Employee("حورية", "عزيز", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(15L, new Employee("احمد", "عاشور", df.parse("02/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(7L, new Employee("يزيد", "خلاف", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(8L, new Employee("عبد الهادي", "بلفتحي", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(9L, new Employee("سلمى", "معروف", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(10L, new Employee("سليمة", "فرعيشي", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(11L, new Employee("احمد", "بلخطابية", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(12L, new Employee("فضيلة", "بولعيد", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(13L, new Employee("رضوان", "عميمور", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(14L, new Employee("حورية", "عزيز", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(15L, new Employee("احمد", "عاشور", df.parse("02/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
 
-            employees.put(16L, new Employee("عماد", "شلية", df.parse("05/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(16L, new Employee("عماد", "شلية", df.parse("05/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
 
-            employees.put(17L, new Employee("نوال", "بن شاشم", df.parse("09/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(18L, new Employee("نوارة", "بلكامل", df.parse("09/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(19L, new Employee("عماد", "خميسي", df.parse("09/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(20L, new Employee("لخضر", "أمقران", df.parse("09/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(21L, new Employee("فريدة", "بن لخضر", df.parse("09/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(22L, new Employee("حنان", "بزاز", df.parse("09/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(23L, new Employee("أسماء", "بودن", df.parse("09/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(17L, new Employee("نوال", "بن شاشم", df.parse("09/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(18L, new Employee("نوارة", "بلكامل", df.parse("09/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(19L, new Employee("عماد", "خميسي", df.parse("09/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(20L, new Employee("لخضر", "أمقران", df.parse("09/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(21L, new Employee("فريدة", "بن لخضر", df.parse("09/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(22L, new Employee("حنان", "بزاز", df.parse("09/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(23L, new Employee("أسماء", "بودن", df.parse("09/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
 
-            employees.put(24L, new Employee("هشام", "زردود", df.parse("16/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(24L, new Employee("هشام", "زردود", df.parse("16/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
 
-            employees.put(25L, new Employee("اسماعيل", "فنوش", df.parse("23/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(26L, new Employee("الزبير", "خليفة", df.parse("23/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(27L, new Employee("شعيب", "بوحالة", df.parse("23/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(25L, new Employee("اسماعيل", "فنوش", df.parse("23/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(26L, new Employee("الزبير", "خليفة", df.parse("23/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(27L, new Employee("شعيب", "بوحالة", df.parse("23/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
             employees.put(28L, new Employee("رابح", "عوقابة", df.parse("23/08/2015"),"chigara","carte jaune",0,"05 60 83 53 46","universitaire","master",df.parse("23/05/2013"),"ingénieur",df.parse("23/05/2013"),"ingénieur","ingénieur"));
 
-            employees.put(29L, new Employee("رحيمة", "بريك", df.parse("26/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(30L, new Employee("أميرة", "بلقدري", df.parse("30/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(31L, new Employee("عبد المؤمن", "علام", df.parse("01/09/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(32L, new Employee("محمد", "صايفي", df.parse("06/09/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(33L, new Employee("فتيحة", "مسيلي", df.parse("06/09/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(34L, new Employee("حمزة", "لمزري", df.parse("13/09/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(35L, new Employee("نسيمة", "بولحليب", df.parse("27/09/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(36L, new Employee("سمير", "نحال", df.parse("04/10/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(37L, new Employee("زهور", "بودن", df.parse("04/10/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(38L, new Employee("سارة", "صدراتي", df.parse("02/11/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(39L, new Employee("طارق", "عميرة", df.parse("15/11/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(40L, new Employee("نصيرة", "بوسنة", df.parse("29/11/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
-            employees.put(41L, new Employee("منال", "ناصري", df.parse("01/12/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(29L, new Employee("رحيمة", "بريك", df.parse("26/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(30L, new Employee("أميرة", "بلقدري", df.parse("30/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(31L, new Employee("عبد المؤمن", "علام", df.parse("01/09/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(32L, new Employee("محمد", "صايفي", df.parse("06/09/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(33L, new Employee("فتيحة", "مسيلي", df.parse("06/09/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(34L, new Employee("حمزة", "لمزري", df.parse("13/09/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(35L, new Employee("نسيمة", "بولحليب", df.parse("27/09/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(36L, new Employee("سمير", "نحال", df.parse("04/10/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(37L, new Employee("زهور", "بودن", df.parse("04/10/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(38L, new Employee("سارة", "صدراتي", df.parse("02/11/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(39L, new Employee("طارق", "عميرة", df.parse("15/11/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(40L, new Employee("نصيرة", "بوسنة", df.parse("29/11/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            employees.put(41L, new Employee("منال", "ناصري", df.parse("01/12/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
 
-            employees.put(42L,new Employee("زكية", "بوعبدالله", df.parse("23/08/2015"),null,null,0,null,null,null,dt,null,dt,null,null));
+            employees.put(42L,new Employee("زكية", "بوعبدالله", df.parse("23/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
         }
         catch (Exception e){
             System.err.print(e);

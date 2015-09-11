@@ -1,0 +1,18 @@
+CREATE TABLE employee (
+_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+first_name TEXT(99),
+last_name TEXT(99),
+date_of_birth DATE,
+place_of_birth TEXT(99),
+marital_status TEXT(99),
+childs_number INT,
+phone_number TEXT(99),
+education_level TEXT(99),
+diploma TEXT(99),
+date_start_firstjob DATE,
+grade_firstjob TEXT(99),
+date_join_cf DATE,
+grade_join_cf TEXT(99),
+actual_grade TEXT(99)
+
+);
