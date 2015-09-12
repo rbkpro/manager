@@ -20,7 +20,7 @@ public class EmployeeService  {
 	}
 	
 	public ArrayList<Employee> getAllEmployees() throws Exception{
-		System.out.print("size list employees :"+employees.size());
+		System.out.println("size employees list :"+employees.size());
 		return new ArrayList<Employee>(fetchDatabase.getEmployees().values());
  	}
 	
