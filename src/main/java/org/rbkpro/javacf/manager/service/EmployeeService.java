@@ -1,11 +1,11 @@
-package org.rbkpro.javacf.messenger.service;
+package org.rbkpro.javacf.manager.service;
 
 
 import java.util.ArrayList;
 import java.util.Map;
 
-import org.rbkpro.javacf.messenger.database.FetchDatabase;
-import org.rbkpro.javacf.messenger.model.Employee;
+import org.rbkpro.javacf.manager.database.FetchDatabase;
+import org.rbkpro.javacf.manager.model.Employee;
 
 
 

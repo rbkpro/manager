@@ -1,4 +1,4 @@
-package org.rbkpro.javacf.messenger.database;
+package org.rbkpro.javacf.manager.database;
 
 
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import org.rbkpro.javacf.messenger.model.Employee;
+import org.rbkpro.javacf.manager.model.Employee;
 
 
 
@@ -60,8 +60,8 @@ public class FetchDatabase {
 				employee.setDate_start_firstjob(rs.getDate("date_start_firstjob"));
 				employee.setGrade_firstjob(rs.getString("grade_firstjob"));
 				employee.setDate_join_cf(rs.getDate("date_join_cf"));
-				employee.setGrade_firstjob(rs.getString("grade_join_cf"));
-				employee.setGrade_firstjob(rs.getString("actual_grade"));
+				employee.setGrade_join_cf(rs.getString("grade_join_cf"));
+				employee.setActual_grade(rs.getString("actual_grade"));
 				
 				employees.put(rs.getString("first_name")+rs.getRow(),employee);
 				

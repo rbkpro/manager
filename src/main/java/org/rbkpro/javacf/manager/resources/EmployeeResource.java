@@ -1,4 +1,4 @@
-package org.rbkpro.javacf.messenger.resources;
+package org.rbkpro.javacf.manager.resources;
 
 
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.rbkpro.javacf.messenger.model.Employee;
-import org.rbkpro.javacf.messenger.service.EmployeeService;
+import org.rbkpro.javacf.manager.model.Employee;
+import org.rbkpro.javacf.manager.service.EmployeeService;
 
 @Path("/employees")
 @Consumes(MediaType.APPLICATION_JSON)

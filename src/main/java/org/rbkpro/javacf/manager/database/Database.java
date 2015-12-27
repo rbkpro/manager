@@ -1,4 +1,4 @@
-package org.rbkpro.javacf.messenger.database;
+package org.rbkpro.javacf.manager.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

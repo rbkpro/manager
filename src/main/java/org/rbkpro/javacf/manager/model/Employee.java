@@ -1,4 +1,4 @@
-package org.rbkpro.javacf.messenger.model;
+package org.rbkpro.javacf.manager.model;
 
 import java.util.Date;
 

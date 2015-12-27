@@ -1,4 +1,4 @@
-package org.rbkpro.javacf.messenger;
+package org.rbkpro.javacf.manager;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
