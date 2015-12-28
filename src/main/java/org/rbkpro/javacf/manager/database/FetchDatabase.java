@@ -39,7 +39,6 @@ public class FetchDatabase {
 		}
 	}
 	
-	
 	public Map<String,Employee> getEmployees() throws Exception{
 		employees.clear();
 		try{
@@ -78,6 +77,7 @@ public class FetchDatabase {
 		PreparedStatement ps = connection.prepareStatement(DELETE_EMPLOYEES);
 		ps.executeUpdate();
 	}
+	
 	public int insertEmployees() throws Exception{
 		
 		PreparedStatement ps = connection.prepareStatement(INSERT_EMPLOYEES);
@@ -110,6 +110,7 @@ public class FetchDatabase {
         try {
         	java.util.Date dt=new java.util.Date();
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
+            
             employees.put(1L, new Employee("فراح", "زيموش", df.parse("19/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
             employees.put(2L, new Employee("نبيل", "ناصر", df.parse("19/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
             employees.put(3L, new Employee("سهام", "بوحوحو", df.parse("19/07/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
@@ -160,38 +161,13 @@ public class FetchDatabase {
             employees.put(41L, new Employee("منال", "ناصري", df.parse("01/12/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
 
             employees.put(42L,new Employee("زكية", "بوعبدالله", df.parse("23/08/2015"),"empty","empty",0,"empty","empty","empty",dt,"empty",dt,"empty","empty"));
+            
         }
         catch (Exception e){
             System.err.print(e);
         }
-
         return new ArrayList<Employee>(employees.values());
     }
-	
-	/*
-	public employee getEmployee(String employeeName) throws Exception{
-		employee employee=new employee();
-		try
-		{
-			PreparedStatement ps = connection.prepareStatement(GET_EMPLOYEES+"WHERE first_name = ?");
-			ps.setString(1, employeeName);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next())
-			{
-				employee.setId(rs.getLong("_id"));
-				employee.setFirstName(rs.getString("first_name"));
-				employee.setLastName(rs.getString("last_name"));
-				employee.setemployeeName(rs.getDate("date_of_birth").toString());
-				
-			}
-			return employee;
-		}
-		catch(Exception e)
-		{
-			throw e;
-		}
-	}
-*/
 
 }
 

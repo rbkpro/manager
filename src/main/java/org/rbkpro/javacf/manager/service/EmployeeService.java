@@ -42,7 +42,7 @@ public class EmployeeService  {
 		 return employee;
 	}
 	
-	public void removeEmployee() throws Exception{
+	public void emptyDatabase() throws Exception{
 		fetchDatabase.emptyEmployees();	
 	}
 	

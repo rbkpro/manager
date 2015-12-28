@@ -20,7 +20,7 @@ import org.rbkpro.javacf.manager.service.EmployeeService;
 @Produces(MediaType.APPLICATION_JSON)
 public class EmployeeResource {
 	
-	EmployeeService EmployeeService ; 
+	private EmployeeService EmployeeService ; 
 	
 	public EmployeeResource() throws Exception{
 		EmployeeService = new EmployeeService();
@@ -33,12 +33,12 @@ public class EmployeeResource {
 	
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	@Path("insertemployees")
-	public String insertEmployee() throws Exception {	
-		return "number employees inserted :"+EmployeeService.insertEmployees();
+	@Path("init")
+	public String initDatabase() throws Exception {
+		EmployeeService.emptyDatabase();
+		return "Number employees inserted :"+EmployeeService.insertEmployees();
 	}
-	
-	
+		
 	@POST
 	public Employee addEmployee(Employee Employee){
 		return EmployeeService.addEmployee(Employee);
@@ -58,9 +58,9 @@ public class EmployeeResource {
 	}
 	 
 	@GET
-	@Path("emptyemployees")
-	public void deleteEmployee() throws Exception{
-		EmployeeService.removeEmployee();
+	@Path("empty")
+	public void emptyDatabase() throws Exception{
+		EmployeeService.emptyDatabase();
 	}
 
 	
